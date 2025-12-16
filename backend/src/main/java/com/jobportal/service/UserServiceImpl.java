@@ -1,13 +1,10 @@
 package com.jobportal.service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Year;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -21,13 +18,11 @@ import com.jobportal.dto.UserDTO;
 import com.jobportal.entity.OTP;
 import com.jobportal.entity.User;
 import com.jobportal.exception.JobPortalException;
-import com.jobportal.repository.NotificationRepository;
 import com.jobportal.repository.OTPRepository;
 import com.jobportal.repository.UserRepository;
 import com.jobportal.utility.Data;
 import com.jobportal.utility.Utilities;
 
-import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
 @Service("userService")
@@ -44,8 +39,9 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	@Autowired
-	private JavaMailSender mailSender;
+	@Autowired(required = false)
+      private JavaMailSender mailSender;
+
 
 	@Autowired
 	private NotificationService notificationService;
@@ -74,19 +70,33 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Boolean sendOTP(String email) throws Exception {
-		User user=userRepository.findByEmail(email).orElseThrow(() -> new JobPortalException("USER_NOT_FOUND"));
-		MimeMessage mm = mailSender.createMimeMessage();
-		MimeMessageHelper message = new MimeMessageHelper(mm, true);
-		message.setTo(email);
-		message.setSubject("Your OTP Code");
-		String generatedOtp = Utilities.generateOTP();
-		OTP otp = new OTP(email, generatedOtp, LocalDateTime.now());
-		otpRepository.save(otp);
-		message.setText(Data.getMessageBody(generatedOtp, user.getName()), true);
-		mailSender.send(mm);
-		return true;
-	}
+public Boolean sendOTP(String email) throws Exception {
+
+    if (mailSender == null) {
+        // Cloud / prod safety
+        System.out.println("Mail sender not configured. Skipping email.");
+        return true;
+    }
+
+    User user = userRepository.findByEmail(email)
+            .orElseThrow(() -> new JobPortalException("USER_NOT_FOUND"));
+
+    MimeMessage mm = mailSender.createMimeMessage();
+    MimeMessageHelper message = new MimeMessageHelper(mm, true);
+
+    message.setTo(email);
+    message.setSubject("Your OTP Code");
+
+    String generatedOtp = Utilities.generateOTP();
+    OTP otp = new OTP(email, generatedOtp, LocalDateTime.now());
+    otpRepository.save(otp);
+
+    message.setText(Data.getMessageBody(generatedOtp, user.getName()), true);
+    mailSender.send(mm);
+
+    return true;
+}
+
 	
 
 	@Override
