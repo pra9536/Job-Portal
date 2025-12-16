@@ -4,6 +4,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### Application Secrets ###
+application.properties
+.env
+
 ### STS ###
 .apt_generated
 .classpath
@@ -31,3 +35,13 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# GitHub Java Upgrade / Logs
+.github/java-upgrade/
+logs/
+*.log
+progress.md
+
+# Local accidental files
+cmd
+echo
