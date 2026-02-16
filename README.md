@@ -1,4 +1,4 @@
-# 💼 Job Portal Application (MERN-Style with Java Backend)
+<img width="1919" height="990" alt="image" src="https://github.com/user-attachments/assets/99054c5f-6437-4923-9948-88bf3e85d7eb" /># 💼 Job Portal Application (MERN-Style with Java Backend)
 
 A full-stack **Job Portal Web Application** built using **React + TypeScript** for frontend and **Java + Spring Boot + MongoDB** for backend.  
 The system allows **Job Seekers**, **Employers**, and **Admins** to manage job postings, applications, profiles, and notifications with secure JWT-based authentication.
@@ -153,6 +153,8 @@ Cloud Hosting (AWS)
 
 
 ### 📸 Screenshots
+
+
 
 
 
