@@ -1,6 +1,6 @@
 package com.jobportal;
 
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -10,12 +10,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.jobportal.jwt.JwtAuthenticationEntryPoint;
 import com.jobportal.jwt.JwtAuthenticationFilter;
+
 
 @Configuration
 @EnableWebSecurity
@@ -23,56 +21,22 @@ public class SecurityConfig {
 
     @Autowired
     private JwtAuthenticationEntryPoint point;
-
     @Autowired
     private JwtAuthenticationFilter filter;
 
-    // ✅ CORS CONFIGURATION
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-
-        CorsConfiguration config = new CorsConfiguration();
-
-        config.setAllowedOrigins(List.of(
-                "http://localhost:5173",
-                "https://job-portal-tan-nu.vercel.app"
-        ));
-
-        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(List.of("*"));
-        config.setAllowCredentials(true);
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", config);
-
-        return source;
-    }
-
-    // ✅ SECURITY FILTER CHAIN
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        http
-            .cors()   // 🔥 VERY IMPORTANT
-            .and()
-            .csrf(csrf -> csrf.disable())
-            .authorizeRequests()
-                .requestMatchers(
-                        "/auth/login",
-                        "/users/register",
-                        "/users/verifyOtp/**",
-                        "/users/sendOtp/**",
-                        "/users/changePass"
-                ).permitAll()
-                .anyRequest().authenticated()
-            .and()
-            .exceptionHandling(ex -> ex.authenticationEntryPoint(point))
-            .sessionManagement(session ->
-                    session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            );
-
+        http.csrf(csrf -> csrf.disable())
+                .authorizeRequests().
+                requestMatchers("/auth/login","/users/register", "/users/verifyOtp/**","/users/sendOtp/**","/users/changePass").permitAll()
+                .anyRequest()
+                .authenticated()
+                .and().exceptionHandling(ex -> ex.authenticationEntryPoint(point))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
-
         return http.build();
     }
+
+
 }
