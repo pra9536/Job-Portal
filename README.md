@@ -169,22 +169,19 @@ Cloud Hosting (AWS)
 ---
 
 
-### 📸 Screenshots
-
-### Dashboard
-![Dashboard](screenshots/dashboard.png)
+## 📸 Screenshots
 
 ### Login Page
-![Login](screenshots/signin.png)
+![Login](screenshots/login.png)
 
 ### Register Page
 ![Register](screenshots/register.png)
 
-### Profile Page
-![Jobs](screenshots/profile.png)
-
 ### Jobs Page
 ![Jobs](screenshots/jobs.png)
+
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
 
 
 ---
