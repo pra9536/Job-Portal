@@ -101,6 +101,7 @@ git clone https://github.com/your-username/job-portal.git
 cd job-portal
 
 
+---
 
 ### ⚙️ Backend Setup
 
@@ -108,6 +109,7 @@ cd backend
 mvn clean install
 mvn spring-boot:run
 
+---
 
 ### 🗄 MongoDB Configuration
 
@@ -116,16 +118,23 @@ spring.data.mongodb.database=jobportaldb
 server.port=8080
 
 
+---
+
 ### 🎨 Frontend Setup
 
 cd frontend
 npm install
 npm run dev
 
+---
+
+
 ### 🌐 Access Application
 
 Frontend: http://localhost:5173
 Backend:  http://localhost:8080
+
+---
 
 
 ### 🔁 API Modules
@@ -137,10 +146,15 @@ ProfileAPI
 NotificationAPI
 
 
+---
+
+
 ### 🧪 Testing
 
 Backend APIs tested using Postman
 Frontend tested manually
+
+---
 
 ### 📈 Future Enhancements
 
@@ -152,9 +166,28 @@ Docker Deployment
 Cloud Hosting (AWS)
 
 
+---
+
+
 ### 📸 Screenshots
 
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
 
+### Login Page
+![Login](screenshots/signin.png)
+
+### Register Page
+![Register](screenshots/register.png)
+
+### Profile Page
+![Jobs](screenshots/profile.png)
+
+### Jobs Page
+![Jobs](screenshots/jobs.png)
+
+
+---
 
 
 
@@ -162,6 +195,8 @@ Cloud Hosting (AWS)
 
 Prateek Yadav
 Java Full Stack Developer
+
+---
 
 ### 📜 License
 
