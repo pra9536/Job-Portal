@@ -1,5 +1,7 @@
 <img width="1919" height="990" alt="image" src="https://github.com/user-attachments/assets/99054c5f-6437-4923-9948-88bf3e85d7eb" /># 💼 Job Portal Application (MERN-Style with Java Backend)
 
+# 💼 Job Portal Application (MERN-Style with Java Backend)
+
 A full-stack **Job Portal Web Application** built using **React + TypeScript** for frontend and **Java + Spring Boot + MongoDB** for backend.  
 The system allows **Job Seekers**, **Employers**, and **Admins** to manage job postings, applications, profiles, and notifications with secure JWT-based authentication.
 
@@ -59,28 +61,29 @@ This project demonstrates real-world **Java Full Stack Development** with modern
 
 ## 🏗 Project Architecture
 
+```
 JOBPORTAL
 │
 ├── backend
-│ └── src/main/java/com/jobportal
-│ ├── api
-│ ├── dto
-│ ├── entity
-│ ├── repository
-│ ├── service
-│ ├── jwt
-│ ├── utility
-│ └── JobPortalApplication.java
+│   └── src/main/java/com/jobportal
+│       ├── api
+│       ├── dto
+│       ├── entity
+│       ├── repository
+│       ├── service
+│       ├── jwt
+│       ├── utility
+│       └── JobPortalApplication.java
 │
 ├── frontend
-│ └── src
-│ ├── components
-│ ├── pages
-│ ├── services
-│ └── App.tsx
+│   └── src
+│       ├── components
+│       ├── pages
+│       ├── services
+│       └── App.tsx
 │
 └── README.md
-
+```
 
 ---
 
@@ -99,75 +102,76 @@ JOBPORTAL
 ```bash
 git clone https://github.com/your-username/job-portal.git
 cd job-portal
-
+```
 
 ---
 
 ### ⚙️ Backend Setup
 
+```bash
 cd backend
 mvn clean install
 mvn spring-boot:run
+```
 
 ---
 
 ### 🗄 MongoDB Configuration
 
+Add in `application.properties`
+
+```properties
 spring.data.mongodb.uri=mongodb://localhost:27017/jobportaldb
 spring.data.mongodb.database=jobportaldb
 server.port=8080
-
+```
 
 ---
 
 ### 🎨 Frontend Setup
 
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
 ---
-
 
 ### 🌐 Access Application
 
-Frontend: http://localhost:5173
-Backend:  http://localhost:8080
+- Frontend: http://localhost:5173  
+- Backend:  http://localhost:8080  
 
 ---
 
+## 🔁 API Modules
 
-### 🔁 API Modules
-
-AuthAPI
-UserAPI
-JobAPI
-ProfileAPI
-NotificationAPI
-
+- AuthAPI  
+- UserAPI  
+- JobAPI  
+- ProfileAPI  
+- NotificationAPI  
 
 ---
 
+## 🧪 Testing
 
-### 🧪 Testing
-
-Backend APIs tested using Postman
-Frontend tested manually
-
----
-
-### 📈 Future Enhancements
-
-Resume Upload & Parsing
-Email Notifications
-Chat System
-Admin Dashboard Analytics
-Docker Deployment
-Cloud Hosting (AWS)
-
+- Backend APIs tested using Postman  
+- Frontend tested manually  
 
 ---
 
+## 📈 Future Enhancements
+
+- Resume Upload & Parsing  
+- Email Notifications  
+- Chat System  
+- Admin Dashboard Analytics  
+- Docker Deployment  
+- Cloud Hosting (AWS)  
+
+---
 
 ## 📸 Screenshots
 
@@ -183,21 +187,15 @@ Cloud Hosting (AWS)
 ### Dashboard
 ![Dashboard](screenshots/dashboard.png)
 
+---
+
+## 👨‍💻 Author
+
+**Prateek Yadav**  
+Java Full Stack Developer  
 
 ---
 
+## 📜 License
 
-
-### 👨‍💻 Author
-
-Prateek Yadav
-Java Full Stack Developer
-
----
-
-### 📜 License
-
-This project is licensed under the MIT License.
-
-
-
+This project is licensed under the **MIT License**.
