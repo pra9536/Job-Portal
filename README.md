@@ -1,4 +1,4 @@
-<img width="1919" height="990" alt="image" src="https://github.com/user-attachments/assets/99054c5f-6437-4923-9948-88bf3e85d7eb" /># 💼 Job Portal Application (MERN-Style with Java Backend)
+<img width="1919" height="990" alt="image" src="https://github.com/user-attachments/assets/99054c5f-6437-4923-9948-88bf3e85d7eb" /># 💼 Job Portal Application 
 
 # 💼 Job Portal Application (MERN-Style with Java Backend)
 
@@ -140,8 +140,8 @@ npm run dev
 
 ### 🌐 Access Application
 
-- Frontend: http://localhost:5173  
-- Backend:  http://localhost:8080  
+- Frontend: https://job-portal-tan-nu.vercel.app/  
+- Backend:  https://job-portal-z0lx.onrender.com/
 
 ---
 
@@ -176,10 +176,13 @@ npm run dev
 ## 📸 Screenshots
 
 ### Login Page
-![Login](screenshots/login.png)
+![Login](screenshots/signin.png)
 
 ### Register Page
 ![Register](screenshots/register.png)
+
+### Profile Page
+![Profile](screenshots/profile.png)
 
 ### Jobs Page
 ![Jobs](screenshots/jobs.png)
