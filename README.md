@@ -1,4 +1,4 @@
-<img width="1919" height="990" alt="image" src="https://github.com/user-attachments/assets/99054c5f-6437-4923-9948-88bf3e85d7eb" /># 💼 [Job Portal Application](https://job-portal-tan-nu.vercel.app/) 
+<img width="1919" height="990" alt="image" src="screenshots/dashboard.png" /># 💼 [Job Portal Application](https://job-portal-tan-nu.vercel.app/) 
 
 # 💼 Job Portal Application (MERN-Style with Java Backend)
 
