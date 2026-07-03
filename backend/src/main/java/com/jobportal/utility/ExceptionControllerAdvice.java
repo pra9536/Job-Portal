@@ -29,9 +29,34 @@ public class ExceptionControllerAdvice {
 		return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
+	private String getErrorMessage(String errorCode) {
+		String msg = environment.getProperty(errorCode);
+		if (msg != null) {
+			return msg;
+		}
+		switch (errorCode) {
+			case "USER_FOUND":
+				return "Email is already registered. Please login or use a different email.";
+			case "USER_NOT_FOUND":
+				return "User not found. Please register first.";
+			case "INVALID_CREDENTIALS":
+				return "Incorrect password. Please try again.";
+			case "OTP_NOT_FOUND":
+				return "OTP not found or expired. Please resend.";
+			case "OTP_INCORRECT":
+				return "Incorrect OTP. Please enter the correct code.";
+			case "JOB_NOT_FOUND":
+				return "Job post not found.";
+			case "JOB_APPLIED_ALREADY":
+				return "You have already applied for this job.";
+			default:
+				return errorCode;
+		}
+	}
+
 	@ExceptionHandler(JobPortalException.class)
 	public ResponseEntity<ErrorInfo>jobPortalExceptionHandler(JobPortalException exception){
-		String msg=environment.getProperty(exception.getMessage());
+		String msg=getErrorMessage(exception.getMessage());
 		ErrorInfo error=new ErrorInfo(msg, HttpStatus.INTERNAL_SERVER_ERROR.value(), LocalDateTime.now());
 		return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
