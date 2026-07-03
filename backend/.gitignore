@@ -5,7 +5,6 @@ target/
 !**/src/test/**/target/
 
 ### Application Secrets ###
-application.properties
 .env
 
 ### STS ###
