@@ -44,6 +44,7 @@ const Header = () => {
         navigate(url)
         close();
     }
+    // Hook 1: Restore user session from token
     useEffect(() => {
         if (token && !user) {
             if (localStorage.getItem("token")) {
@@ -51,12 +52,16 @@ const Header = () => {
                 dispatch(setUser({ ...decoded, email: decoded.sub }));
             }
         }
+    }, [token]);
+
+    // Hook 2: Fetch profile when profileId is available
+    useEffect(() => {
         if (user?.profileId) {
-            getProfile(user?.profileId).then((res) => {
+            getProfile(user.profileId).then((res) => {
                 dispatch(setProfile(res));
             }).catch((err) => console.log(err));
         }
-    }, [token, navigate, user]);
+    }, [user?.profileId]);
     return (location.pathname != "/signup" && location.pathname != "/login") ? <div data-aos="zoom-out" className="w-full bg-mine-shaft-950 px-6 text-white h-20 flex justify-between items-center font-['poppins']">
         <div onClick={() => navigate("/")} className="flex cursor-pointer items-center text-bright-sun-400">
              <img src="/anchor.png" alt="JobNest Logo" className="h-16 w-30 object-contain"/>
