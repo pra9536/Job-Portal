@@ -59,8 +59,8 @@ const SignUp = () => {
             }).catch((err) => {
                 console.log(err);
                 setLoading(false);
-              errorNotification("Registration Failed", err.response.data.errorMessage);
-        });
+                errorNotification("Registration Failed", err.response?.data?.errorMessage || err.message || "An error occurred");
+            });
 
         }
     }

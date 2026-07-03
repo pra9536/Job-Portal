@@ -32,7 +32,7 @@ const TalentCard = (props: any) => {
             window.location.reload();
         }).catch((err) => {
             console.log(err)
-            errorNotification('Error', err.response.data.errorMessage);
+            errorNotification('Error', err.response?.data?.errorMessage || err.message || "An error occurred");
         });
     
     }

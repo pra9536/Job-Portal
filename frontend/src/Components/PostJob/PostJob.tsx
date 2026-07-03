@@ -74,7 +74,7 @@ const PostJob = () => {
             navigate(`/posted-jobs/${res.id}`);
         }).catch((err) => {
             console.log(err);
-            errorNotification("Error", err.response.data.errorMessage);
+            errorNotification("Error", err.response?.data?.errorMessage || err.message || "An error occurred");
         }).finally(()=>dispatch(hideOverlay()));
     }
     const handleDraft = () => {
@@ -84,7 +84,7 @@ const PostJob = () => {
             navigate(`/posted-jobs/${res.id}`);
         }).catch((err) => {
             console.log(err);
-            errorNotification("Error", err.response.data.errorMessage);
+            errorNotification("Error", err.response?.data?.errorMessage || err.message || "An error occurred");
         }).finally(()=>dispatch(hideOverlay()));
     }
     return <div data-aos="zoom-out" className="px-16 bs-mx:px-10 md-mx:px-5 py-5 ">

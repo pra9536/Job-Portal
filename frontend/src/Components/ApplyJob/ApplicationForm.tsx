@@ -30,7 +30,7 @@ const ApplicationForm = () => {
             successNotification("Success", "Job Applied Successfully");
         }).catch((err) => { 
             setSubmit(false);
-            errorNotification("Error", err.response.data.errorMessage);
+            errorNotification("Error", err.response?.data?.errorMessage || err.message || "An error occurred");
         });
 
     }

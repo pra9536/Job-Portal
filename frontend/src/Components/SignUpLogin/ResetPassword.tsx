@@ -35,7 +35,7 @@ const ResetPassword = (props: any) => {
         }).catch((err) => {
             console.log(err);
             setOtpSending(false);
-            errorNotification("OTP Sending Failed.", err.response.data.errorMessage);
+            errorNotification("OTP Sending Failed.", err.response?.data?.errorMessage || err.message || "An error occurred");
         })
 
     }
@@ -57,16 +57,16 @@ const ResetPassword = (props: any) => {
             setVerified(true);
         }).catch((err) => {
             console.log(err);
-            errorNotification("OTP Verification Failed.", err.response.data.errorMessage);
+            errorNotification("OTP Verification Failed.", err.response?.data?.errorMessage || err.message || "An error occurred");
         })
     }
     const handleResetPassword=()=>{
         resetPassword(email, password).then((res)=>{
             successNotification("Password Reset Successfully.", "Redirecting to login page.");
             props.close();
-        }).catch((err)=>{
+        }).catch((err) => {
             console.log(err);
-            errorNotification("Password Reset Failed.", err.response.data.errorMessage);
+            errorNotification("Password Reset Failed.", err.response?.data?.errorMessage || err.message || "An error occurred");
         })
     }
     return <Modal opened={props.opened} onClose={props.close} overlayProps={{ backgroundOpacity: 0.55, blur: 3, }} title="Reset Password" centered>

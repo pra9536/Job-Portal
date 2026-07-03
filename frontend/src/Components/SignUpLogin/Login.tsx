@@ -46,8 +46,8 @@ const Login = () => {
                 }, 4000)
             }).catch((err) => {
                 console.log(err);
-                    errorNotification("Login Failed", err.response.data.errorMessage);
-                    setLoading(false);
+                errorNotification("Login Failed", err.response?.data?.errorMessage || err.message || "An error occurred");
+                setLoading(false);
             });
 
         }
