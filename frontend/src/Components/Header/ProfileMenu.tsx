@@ -10,7 +10,7 @@ import {
 } from '@tabler/icons-react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { removeUser } from '../../Slices/UserSlice';
 import { removeJwt } from '../../Slices/JwtSlice';
 
@@ -20,10 +20,11 @@ const ProfileMenu = () => {
     const { colorScheme, setColorScheme } = useMantineColorScheme();
     const [opened, setOpened] = useState(false);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const handleLogout=()=>{
-        
         dispatch(removeUser());
         dispatch(removeJwt());
+        navigate("/login");
     }
     return (
         <Menu shadow="md" width={200} opened={opened} onChange={setOpened}>

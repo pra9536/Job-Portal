@@ -58,7 +58,7 @@ const Header = () => {
             }).catch((err) => console.log(err))
             // .finally(()=>dispatch(hideOverlay()));
         }
-    }, [token, navigate]);
+    }, [token, navigate, user]);
     return (location.pathname != "/signup" && location.pathname != "/login") ? <div data-aos="zoom-out" className="w-full bg-mine-shaft-950 px-6 text-white h-20 flex justify-between items-center font-['poppins']">
         <div onClick={() => navigate("/")} className="flex cursor-pointer items-center text-bright-sun-400">
              <img src="/anchor.png" alt="JobNest Logo" className="h-16 w-30 object-contain"/>
