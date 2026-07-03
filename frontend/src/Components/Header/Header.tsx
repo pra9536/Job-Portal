@@ -45,18 +45,16 @@ const Header = () => {
         close();
     }
     useEffect(() => {
-        if (token) {
+        if (token && !user) {
             if (localStorage.getItem("token")) {
                 const decoded = jwtDecode(localStorage.getItem("token") || "");
                 dispatch(setUser({ ...decoded, email: decoded.sub }));
             }
         }
         if (user?.profileId) {
-            // dispatch(showOverlay())
             getProfile(user?.profileId).then((res) => {
                 dispatch(setProfile(res));
-            }).catch((err) => console.log(err))
-            // .finally(()=>dispatch(hideOverlay()));
+            }).catch((err) => console.log(err));
         }
     }, [token, navigate, user]);
     return (location.pathname != "/signup" && location.pathname != "/login") ? <div data-aos="zoom-out" className="w-full bg-mine-shaft-950 px-6 text-white h-20 flex justify-between items-center font-['poppins']">
