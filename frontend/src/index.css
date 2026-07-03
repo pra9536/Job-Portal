@@ -36,3 +36,51 @@
     border-radius: 10px;
     background-color: #ffbd20 ;
 }
+
+/* Light Mode Overrides for Hardcoded Dark Theme Tailwind Classes */
+html[data-mantine-color-scheme="light"] body,
+html[data-mantine-color-scheme="light"] .bg-mine-shaft-950 {
+    background-color: #f8fafc !important; /* light slate background */
+    color: #0f172a !important; /* dark slate text */
+}
+
+html[data-mantine-color-scheme="light"] .bg-mine-shaft-900 {
+    background-color: #ffffff !important; /* White card background */
+    color: #0f172a !important;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+}
+
+html[data-mantine-color-scheme="light"] .bg-mine-shaft-950.px-6 {
+    background-color: #ffffff !important; /* Header background in light mode */
+    color: #0f172a !important;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+html[data-mantine-color-scheme="light"] .text-white,
+html[data-mantine-color-scheme="light"] .text-mine-shaft-300,
+html[data-mantine-color-scheme="light"] .text-mine-shaft-200 {
+    color: #334155 !important; /* Dark slate text */
+}
+
+html[data-mantine-color-scheme="light"] .text-mine-shaft-400 {
+    color: #64748b !important;
+}
+
+html[data-mantine-color-scheme="light"] .border-mine-shaft-800,
+html[data-mantine-color-scheme="light"] .border-mine-shaft-700 {
+    border-color: #e2e8f0 !important;
+}
+
+html[data-mantine-color-scheme="light"] .bg-mine-shaft-800 {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+}
+
+html[data-mantine-color-scheme="light"] .hover\:bg-mine-shaft-900:hover {
+    background-color: #f1f5f9 !important;
+}
+
+html[data-mantine-color-scheme="light"] a {
+    color: inherit;
+}

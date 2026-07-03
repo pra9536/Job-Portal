@@ -1,4 +1,4 @@
-import { Menu, rem, Avatar, Switch } from '@mantine/core';
+import { Menu, rem, Avatar, Switch, useMantineColorScheme } from '@mantine/core';
 import {
     IconMessageCircle,
     IconLogout2,
@@ -17,8 +17,8 @@ import { removeJwt } from '../../Slices/JwtSlice';
 const ProfileMenu = () => {
     const user=useSelector((state:any)=>state.user);
     const profile=useSelector((state:any)=>state.profile);
+    const { colorScheme, setColorScheme } = useMantineColorScheme();
     const [opened, setOpened] = useState(false);
-    const [checked, setChecked] = useState(false);
     const dispatch = useDispatch();
     const handleLogout=()=>{
         
@@ -46,20 +46,20 @@ const ProfileMenu = () => {
                     Resume
                 </Menu.Item>
                 <Menu.Item
-                    leftSection={<IconMoon style={{ width: rem(14), height: rem(14) }} />}
+                    leftSection={colorScheme === 'dark' ? <IconMoon style={{ width: rem(14), height: rem(14) }} /> : <IconSun style={{ width: rem(14), height: rem(14) }} />}
                     rightSection={
                         <Switch size="sm" color="dark" className='cursor-pointer'
-                            onLabel={<IconSun
-                                style={{ width: rem(14), height: rem(14) }}
-                                stroke={2.5}
-                                color="yellow"
-                            />} offLabel={<IconMoonStars
+                            onLabel={<IconMoonStars
                                 style={{ width: rem(14), height: rem(14) }}
                                 stroke={2.5}
                                 color="cyan"
+                            />} offLabel={<IconSun
+                                style={{ width: rem(14), height: rem(14) }}
+                                stroke={2.5}
+                                color="yellow"
                             />}
-                            checked={checked}
-                            onChange={(event) => setChecked(event.currentTarget.checked)}
+                            checked={colorScheme === 'dark'}
+                            onChange={(event) => setColorScheme(event.currentTarget.checked ? 'dark' : 'light')}
                         />
                     }
                 >
