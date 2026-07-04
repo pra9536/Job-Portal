@@ -67,7 +67,7 @@ const Header = () => {
              <img src="/anchor.png" alt="JobNest Logo" className="h-16 w-30 object-contain"/>
             <div className="xs-mx:hidden text-3xl font-semibold">JobNest</div>
         </div>
-        {NavLinks()}
+        <NavLinks />
         <div className="flex gap-3 items-center">
 
             {user ? <ProfileMenu /> : <Link to="/login" className="text-mine-shaft-200 hover:text-bright-sun-400 "><Button color="brightSun.4" variant="subtle">Login</Button></Link>}
